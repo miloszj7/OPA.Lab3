@@ -15,7 +15,7 @@ public class OPASAXParser {
 	
 	
 	/**
-	 * @param args
+	 * @param args - moze pozniej sciezka pliku xml z linii polecen ?
 	 */
 	public static void main(String[] args) {
 				
