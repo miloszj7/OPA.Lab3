@@ -26,17 +26,16 @@ public class OPASAXParser {
 //		      s2 += s + "\n";		    
 //		    System.out.println(s2);
 		    
-		   // InputSource is = new InputSource(br);
-		    
+//		    InputSource is = new InputSource(br);
+//		    br.close();
+			
 		    SAXParser parser = null;
 		    SAXParserFactory factory = SAXParserFactory.newInstance();
 		    parser = factory.newSAXParser();
 		    DefaultHandler handler = new simpleSAXHandler();
 		    
-		    System.out.println("###########################");
+		    System.out.println("#############   Dokument XML   ##############");
 		    parser.parse(FILEPATH, handler);
-
-//		    br.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
