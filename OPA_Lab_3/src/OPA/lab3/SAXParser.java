@@ -1,0 +1,13 @@
+package OPA.lab3;
+
+public class SAXParser {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("out");
+	}
+
+}
