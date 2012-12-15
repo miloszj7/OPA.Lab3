@@ -1,13 +1,9 @@
 package OPA.lab3;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class OPASAXParser {
@@ -32,7 +28,9 @@ public class OPASAXParser {
 		    SAXParser parser = null;
 		    SAXParserFactory factory = SAXParserFactory.newInstance();
 		    parser = factory.newSAXParser();
-		    DefaultHandler handler = new simpleSAXHandler();
+		    XMLReader xmlReader = parser.getXMLReader();
+		    DefaultHandler handler = new SimpleSAXHandler();
+		    xmlReader.setProperty("http://xml.org/sax/properties/lexical-handler", handler);
 		    
 		    System.out.println("#############   Dokument XML   ##############");
 		    parser.parse(FILEPATH, handler);
@@ -41,5 +39,4 @@ public class OPASAXParser {
 			e.printStackTrace();
 		}
 	}
-
 }
