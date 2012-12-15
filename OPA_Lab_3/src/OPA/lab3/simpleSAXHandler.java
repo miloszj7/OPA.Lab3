@@ -36,6 +36,21 @@ public class simpleSAXHandler extends DefaultHandler {
 //		System.out.println("Document processing finished");
 		super.endDocument();
 	}
+	
+	//WALKA ZE ZNAKAMI BIALYMI - SPACJE I CHYBA ENTERY
+	@Override
+	public void characters(char[] ch, int start, int length)
+			throws SAXException {
+		for (int i = 0; i < length; i++) {
+			if(ch[start + i]== ' ')
+				continue;
+			System.out.print(ch[start + i]);
+			if (i==length - 1)
+				System.out.print("\n");
+		}
+		
+		super.characters(ch, start, length);
+	}
 
 	@Override
 	public void startElement(String uri, String localName, String qName,
