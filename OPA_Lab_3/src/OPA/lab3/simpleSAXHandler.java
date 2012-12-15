@@ -37,12 +37,11 @@ public class simpleSAXHandler extends DefaultHandler {
 		super.endDocument();
 	}
 	
-	//WALKA ZE ZNAKAMI BIALYMI - SPACJE I CHYBA ENTERY
 	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
 		for (int i = 0; i < length; i++) {
-			if(ch[start + i]== ' ' || ch[start + i]== '\n')
+			if(/*ch[start + i]== ' ' ||*/ ch[start + i]== '\n')
 				continue;
 			if(i==0){
 				for(int a=0; a<LICZBA_WCIEC; a++) {System.out.print(WCIECIE);}
@@ -51,6 +50,7 @@ public class simpleSAXHandler extends DefaultHandler {
 			if (i==length - 1)
 				System.out.print("\n");
 		}
+//		System.out.println(new String(ch, start, length).trim());
 		
 		super.characters(ch, start, length);
 	}

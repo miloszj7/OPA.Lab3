@@ -8,7 +8,7 @@
   minBufferTime="PT1.2S"
   profiles="urn:mpeg:dash:profile:isoff-on-demand:2011">
 
-  <BaseURL>http://cdn1.example.com/</BaseURL>
+  <BaseURL>http://cdn1.example.com/   ala ma kota</BaseURL>
   <BaseURL>http://cdn2.example.com/</BaseURL>
 
   <Period>
