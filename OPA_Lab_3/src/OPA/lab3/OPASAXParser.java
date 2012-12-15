@@ -11,20 +11,14 @@ public class OPASAXParser {
 	
 	
 	/**
-	 * @param args - moze pozniej sciezka pliku xml z linii polecen ?
+	 * @param args - jeden argument - sciezka do pliku XML [opcjonalne]
 	 */
 	public static void main(String[] args) {
-				
+		String filePathCmd = null;
+		if (args.length == 1) {
+			filePathCmd = args[0];
+		}
 		try {
-//			BufferedReader br = new BufferedReader(new FileReader(new File(FILEPATH)));
-//			String s, s2 = new String();
-//		    while((s = br.readLine())!= null)
-//		      s2 += s + "\n";		    
-//		    System.out.println(s2);
-		    
-//		    InputSource is = new InputSource(br);
-//		    br.close();
-			
 		    SAXParser parser = null;
 		    SAXParserFactory factory = SAXParserFactory.newInstance();
 		    parser = factory.newSAXParser();
@@ -33,7 +27,11 @@ public class OPASAXParser {
 		    xmlReader.setProperty("http://xml.org/sax/properties/lexical-handler", handler);
 		    
 		    System.out.println("#############   Dokument XML   ##############");
-		    parser.parse(FILEPATH, handler);
+		    if (filePathCmd == null){
+		    	parser.parse(FILEPATH, handler);
+		    } else {
+		    	parser.parse(filePathCmd, handler);
+		    }
 
 		} catch (Exception e) {
 			e.printStackTrace();
