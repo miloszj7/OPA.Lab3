@@ -18,7 +18,7 @@ public class simpleSAXHandler extends DefaultHandler {
 	/**
 	 * Licznik ile razy zrobic wciecie, czyli czyli jak gleboko w drzewie XML jest dany element
 	 */
-	private static int i=0;
+	private static int LICZBA_WCIEC=0;
 	
 	/**
 	 * Ilosc atrybutow danego elementu
@@ -42,8 +42,11 @@ public class simpleSAXHandler extends DefaultHandler {
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
 		for (int i = 0; i < length; i++) {
-			if(ch[start + i]== ' ')
+			if(ch[start + i]== ' ' || ch[start + i]== '\n')
 				continue;
+			if(i==0){
+				for(int a=0; a<LICZBA_WCIEC; a++) {System.out.print(WCIECIE);}
+			}
 			System.out.print(ch[start + i]);
 			if (i==length - 1)
 				System.out.print("\n");
@@ -56,29 +59,25 @@ public class simpleSAXHandler extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName,
 			Attributes attributes) throws SAXException {
 		length = attributes.getLength();
-		for(int a=0; a<i; a++) {System.out.print(WCIECIE);}
+		for(int a=0; a<LICZBA_WCIEC; a++) {System.out.print(WCIECIE);}
 		if(length == 0)
 			System.out.println("<" + qName + ">");
 		else{
 			System.out.print("<" + qName + " ");
 			
 			for (int b=0; b<length; b++){
-//				String name = attributes.getQName(b);
-//				System.out.print(name + "=\"");
-//				String value = attributes.getValue(b);
-//				System.out.print(value + "\" ");
 				System.out.print(attributes.getQName(b) + "=\"" + attributes.getValue(b) + "\" ");
 			}
 			System.out.println(">");
 		}
-		i++;
+		LICZBA_WCIEC++;
 		super.startElement(uri, localName, qName, attributes);
 	}
 	@Override
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
-		i--;
-		for(int a=0; a<i; a++) {System.out.print(WCIECIE);}
+		LICZBA_WCIEC--;
+		for(int a=0; a<LICZBA_WCIEC; a++) {System.out.print(WCIECIE);}
 		System.out.println("</" + qName + ">");
 		super.endElement(uri, localName, qName);
 	}
